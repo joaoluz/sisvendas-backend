@@ -18,4 +18,8 @@ public class CategoriaService {
 		return (List<Categoria>) repository.findAll();
 	}
 	
+	public Categoria getById(Long id) {
+		return repository.findById(id).get();
+	}
+	
 }
