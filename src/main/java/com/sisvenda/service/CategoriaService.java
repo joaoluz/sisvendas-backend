@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sisvenda.exception.NegocioException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.sisvenda.entidade.Categoria;
@@ -17,8 +19,8 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repository;
 	
-	public List<Categoria> listar() {
-		return (List<Categoria>) repository.findAll();
+	public Page<Categoria> listar(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 	public Categoria getById(Long id) {
@@ -36,7 +38,6 @@ public class CategoriaService {
 		return categoria;
 	}
 
-	@Transactional
     public List<Categoria> listarCategoriasPais() {
 		return repository.listarCategoriasPais();
     }
