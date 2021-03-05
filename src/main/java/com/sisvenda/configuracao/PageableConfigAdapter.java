@@ -13,7 +13,7 @@ public class PageableConfigAdapter implements WebMvcConfigurer {
 
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         PageableHandlerMethodArgumentResolver phmar = new PageableHandlerMethodArgumentResolver();
-        phmar.setFallbackPageable(new PageRequest(0, 10));
+        phmar.setFallbackPageable(PageRequest.of(0, 10));
         resolvers.add(phmar);
     }
 }
