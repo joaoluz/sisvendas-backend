@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sisvenda.entidade.Categoria;
 import com.sisvenda.service.CategoriaService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @RestController
@@ -26,17 +27,18 @@ public class CategoriaController {
 	
 	@Autowired
 	private CategoriaService service;
-	
+
 	@GetMapping(value="/listar")
     public Page<Categoria> listar(Pageable pageable) {
         return service.listar(pageable);
     }
-	
+
 	@GetMapping(value="/pais")
     public List<Categoria> listarCategoriasPais() {
         return service.listarCategoriasPais();
     }
 
+	@RolesAllowed("vendedor")
 	@GetMapping(value="/{id}")
 	public Categoria getById(@PathVariable Long id) {
 		return service.getById(id);
