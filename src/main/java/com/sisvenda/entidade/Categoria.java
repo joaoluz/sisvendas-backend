@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "tab_categoria")
 public class Categoria {
 	
 	@Id
@@ -26,3 +27,4 @@ public class Categoria {
 	@JoinColumn(name="id_categoria_pai", referencedColumnName="id")
 	private Categoria categoriaPai;
 }
+	

@@ -2,7 +2,8 @@ package com.sisvenda.controller;
 
 import java.util.List;
 
-import com.sisvenda.exception.NegocioException;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,10 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sisvenda.entidade.Categoria;
+import com.sisvenda.exception.NegocioException;
 import com.sisvenda.service.CategoriaService;
-
-import javax.annotation.security.RolesAllowed;
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("categoria")
@@ -38,7 +37,7 @@ public class CategoriaController {
         return service.listarCategoriasPais();
     }
 
-	@RolesAllowed("vendedor")
+//	@RolesAllowed("vendedor")
 	@GetMapping(value="/{id}")
 	public Categoria getById(@PathVariable Long id) {
 		return service.getById(id);
